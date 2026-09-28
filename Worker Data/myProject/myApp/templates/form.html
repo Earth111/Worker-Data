@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>แบบฟอร์มบันทึกข้อมูล</title>
+{% endblock %}
+{% block content %}
+<link href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfCnpTx84kPBerrKctOBV19Rj4GbcFTBZif8gJ8Cy1g&s=10" rel="icon" type="image/x-icon">
+<body style="background-image: url('https://4kwallpapers.com/images/wallpapers/marvels-spider-man-3440x1440-13003.jpeg'); background-size: 100% 100vh; background-repeat: no-repeat; background-position: center;  background-attachment: fixed; margin: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://4kwallpapers.com/images/wallpapers/marvels-spider-man-3440x1440-13003.jpeg')"> 
+    
+    </body>
+<div class="container mt-3" style="font-weight: bold; font-size: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 50px auto; max-width: 500px; padding: 20px;">
+    <h2 class="text-center" style="font-weight: bold; font-size: 40px; color: #ffffff; width: fit-content; margin: 8px auto; padding: 8px 12px; background-color: #138a06; border-radius: 12px;">แบบฟอร์มบันทึกข้อมูล</h2>
+    <form method="POST" action="form">
+        {% csrf_token %}
+        <div class="form-group mb-3" style="font-weight: bold; font-size: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <label for="name" style="display: block; text-align: center; font-weight: bold; color: #ffffff; width: 100%; box-sizing: border-box; margin: 8px 0; padding: 8px 12px; background-color: #1d66ee; border-radius: 12px; margin-top: 15px;">ข้อมูลชื่อ</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="age" style="display: block; text-align: center; font-weight: bold; color: #ffffff; width: 100%; box-sizing: border-box; margin: 8px 0; padding: 8px 12px; background-color: #1d66ee; border-radius: 12px; margin-top: 15px;">ข้อมูลอายุ</label>
+            <input type="text" name="age" class="form-control">
+        </div>
+        <button type="submit" value="บันทึกข้อมูล" class="btn btn-success mt-3" style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; border-radius: 8px;  padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 16px; padding: 8px 20px;  ">บันทึกข้อมูล</button>
+    </form>
+</div>
+{% endblock %}

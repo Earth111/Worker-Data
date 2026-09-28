@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfCnpTx84kPBerrKctOBV19Rj4GbcFTBZif8gJ8Cy1g&s=10" rel="icon" type="image/x-icon">
+    <body style="background-image: url('spiderman1.gif'); background-size: 100% 100vh; background-repeat: no-repeat; background-position: center;  background-attachment: fixed; margin: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://4kwallpapers.com/images/wallpapers/marvels-spider-man-3440x1440-13003.jpeg')"> 
+    
+    </body>
+        
+
+    {% extends "base.html" %}
+    {% block title %}
+        <title>ข้อมูลผู้ใช้งาน</title>
+    {% endblock %}
+</head>
+<body>
+    <a href="/">ข้อมูลผู้ใช้งาน</a>
+    <a href="/about">เกี่ยวกับโปรเจค</a>
+    <hr>     
+    <hr>
+{% block content %}
+<div class ="container" style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; border-radius: 4px">
+   <h2 class="text-center mt-3" style="font-weight: bold; color: #ffffff; width: fit-content; margin: 8px auto; padding: 8px 12px; background-color: #5a8804; border-radius: 6px;">ข้อมูลผู้ใช้งาน</h2>
+     {% if messages %}
+         {% for message in messages %}
+             <div class="alert alert-{{ message.tags }}" role="alert">
+                 <strong>{{ message }}</strong>
+             </div>
+         {% endfor %}
+     {% endif %}
+   <table class="table table table-hover" style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; border-radius: 12px ;overflow: hidden; ">
+    <thead class ="table-dark">
+        <tr>
+            <th scope="col">รหัส</th>
+            <th scope="col">ชื่อ</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">วันที่เพิ่มข้อมูล</th>
+            <th scope="col">แก้ไขข้อมูล</th>
+            <th scope="col">ลบข้อมูลออกจากระบบ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in all %}
+        <tr style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; border-radius: 4px;padding: 6px 12px; ">
+            <th scope="row">{{ person.id }}</th>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ person.date }}</td>
+            <td><a href="/edit/{{person.id}}" class="btn btn-warning" style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">แก้ไขข้อมูล</a></td>
+            <td>
+                <a href="/delete/{{person.id}}" 
+                class="btn btn-danger"
+                onclick="return confirm('คุณต้องการลบข้อมูล {{ person.name }} ใช่หรือไม่')"
+                 style="font-weight: bold; font-size: 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #000000;">ลบข้อมูลออกจากระบบ</a>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    
+     
+    {% endblock %}
+    
+    
+    
+</body>
+</html>
